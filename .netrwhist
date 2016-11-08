@@ -1,0 +1,6 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/Users/danielhodges/bernieportal'
+let g:netrw_dirhist_2='/Users/danielhodges/BP_RN'
+let g:netrw_dirhist_3='/Users/danielhodges/workspace/myProject'
+let g:netrw_dirhist_4='/Users/danielhodges/BP_RN'
