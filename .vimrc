@@ -21,6 +21,7 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'Yggdroot/indentLine'
 Plugin 'vim-airline/vim-airline'
 Plugin 'scrooloose/nerdcommenter'
+Plugin 'terryma/vim-multiple-cursors'
 call vundle#end()
 
 set expandtab
@@ -50,6 +51,7 @@ map <Leader>s :w<CR>
 map <Leader>q :q<CR>
 map <Leader>x :x<CR>
 map <Leader>p :CtrlP<CR>
+map <Leader>* <C-n>
 nnoremap <Leader>w <C-w>
 
 "----Auto-Commands----"
