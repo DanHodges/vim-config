@@ -20,6 +20,7 @@ Plugin 'mxw/vim-jsx'
 Plugin 'pangloss/vim-javascript'
 Plugin 'Yggdroot/indentLine'
 Plugin 'vim-airline/vim-airline'
+Plugin 'scrooloose/nerdcommenter'
 call vundle#end()
 
 set expandtab
