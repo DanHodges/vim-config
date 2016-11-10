@@ -1,8 +1,11 @@
 execute pathogen#infect()
+set t_Co=256
 syntax on
 filetype plugin indent on
+set laststatus=2
 set noswapfile
 set pastetoggle=<f5>
+autocmd BufLeave,FocusLost * silent! wall
 let mapleader = "\<Space>"
 let g:ctrlp_custom_ignore = {
   \ 'dir': '\v[\/](\.git|node_modules|\.sass-cache|bower_components|bui‌​ld)$',
@@ -16,6 +19,7 @@ Plugin 'posva/vim-vue'
 Plugin 'mxw/vim-jsx'
 Plugin 'pangloss/vim-javascript'
 Plugin 'Yggdroot/indentLine'
+Plugin 'vim-airline/vim-airline'
 call vundle#end()
 
 set expandtab
