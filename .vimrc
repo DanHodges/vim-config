@@ -44,7 +44,7 @@ set backspace=indent,eol,start
 set number
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 set laststatus=2
-set directory^=/Users/danielhodges/.vim/tmp//
+set directory=/Users/danielhodges/.vim/tmp//
 
 let mapleader = "\<Space>"
 map <Leader>1 :NERDTreeToggle<CR>
