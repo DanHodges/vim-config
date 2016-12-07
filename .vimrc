@@ -13,6 +13,9 @@ Plugin 'mxw/vim-jsx'
 Plugin 'mtscout6/syntastic-local-eslint.vim'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'posva/vim-vue'
+Plugin 'stanangeloff/php.vim'
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-easytags'
 call vundle#end()
 
 
@@ -41,6 +44,7 @@ set backspace=indent,eol,start
 set number
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 set laststatus=2
+set directory^=/Users/danielhodges/.vim/tmp//
 
 let mapleader = "\<Space>"
 map <Leader>1 :NERDTreeToggle<CR>
