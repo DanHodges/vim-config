@@ -24,6 +24,7 @@ let g:indentLine_color_term = 239
 let g:indentLine_char = '¦'
 let g:indentLine_leadingSpaceEnabled = 1
 let g:indentLine_leadingSpaceChar = '˰'
+let g:easytags_async = 1
 
 let g:syntastic_javascript_checkers = ['node_modules/.bin/eslint']
 let g:syntastic_javascript_eslint_exec = 'node_modules/.bin/eslint'
@@ -44,7 +45,8 @@ set backspace=indent,eol,start
 set number
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 set laststatus=2
-set directory=/Users/danielhodges/.vim/tmp//
+set directory=$HOME/.vim/swapfiles//
+
 
 let mapleader = "\<Space>"
 map <Leader>1 :NERDTreeToggle<CR>
@@ -59,6 +61,7 @@ noremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+noremap <C-[> <C-^>
 
 let g:ctrlp_custom_ignore = {
   \ 'dir': '\v[\/](\.git|node_modules|\.sass-cache|bower_components|bui‌​ld)$',
