@@ -64,7 +64,7 @@ let g:ctrlp_custom_ignore = {
 
 "----Auto-Commands----"
 ""Vue syntax of highlighting"
-autocmd BufNewFile,BufRead *.vue setft=vue
+autocmd BufNewFile,BufRead *.vue set ft=vue
 
 ""Auto src .vimrc on save"
 augroup autosourcing
