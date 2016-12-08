@@ -33,7 +33,7 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-set mouse=a
+
 set expandtab
 set tabstop=2
 set shiftwidth=2
@@ -54,14 +54,14 @@ map <Leader>s :w<CR>
 map <Leader>q :q<CR>
 map <Leader>x :x<CR>
 map <Leader>p :CtrlP<CR>
+map <Leader>h :bp<CR>
+map <Leader>l :bn<CR>
 map <Leader><Leader> :CtrlP<CR>
-map <Leader>* <C-n>
 noremap <Leader>w <C-w>
 noremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
-noremap <C-[> <C-^>
 
 let g:ctrlp_custom_ignore = {
   \ 'dir': '\v[\/](\.git|node_modules|\.sass-cache|bower_components|bui‌​ld)$',
