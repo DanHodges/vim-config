@@ -5,7 +5,6 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'vim-airline/vim-airline'
 Plugin 'terryma/vim-multiple-cursors'
-Plugin 'Yggdroot/indentLine'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'scrooloose/nerdcommenter'
@@ -16,18 +15,16 @@ Plugin 'posva/vim-vue'
 Plugin 'stanangeloff/php.vim'
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-easytags'
+Plugin 'arnaud-lb/vim-php-namespace'
 call vundle#end()
 
 
 let g:jsx_ext_required = 0 " Allow JSX in normal JS files
-let g:indentLine_color_term = 239
-let g:indentLine_char = '¦'
-let g:indentLine_leadingSpaceEnabled = 1
-let g:indentLine_leadingSpaceChar = '˰'
 let g:easytags_async = 1
 
 let g:syntastic_javascript_checkers = ['node_modules/.bin/eslint']
 let g:syntastic_javascript_eslint_exec = 'node_modules/.bin/eslint'
+let g:syntastic_php_checkers = ['php']
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
@@ -35,9 +32,11 @@ let g:syntastic_check_on_wq = 0
 
 
 set expandtab
-set tabstop=2
-set shiftwidth=2
+set tabstop=4
+set shiftwidth=4
 set autoindent
+set smartindent
+
 set t_Co=256
 set pastetoggle=<f5>
 set wildmode=list:longest,full
@@ -78,3 +77,11 @@ augroup autosourcing
 	autocmd!
 	autocmd BufWritePost .vimrc source %
 augroup END
+
+""php namespace"
+function! IPhpInsertUse()
+    call PhpInsertUse()
+    call feedkeys('a',  'n')
+endfunction
+autocmd FileType php inoremap <Leader>u <Esc>:call IPhpInsertUse()<CR>
+autocmd FileType php noremap <Leader>u :call PhpInsertUse()<CR>
