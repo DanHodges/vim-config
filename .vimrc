@@ -1,26 +1,26 @@
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
+Plugin 'tpope/vim-fugitive'
+Plugin 'valloric/youcompleteme'
 Plugin 'vim-airline/vim-airline'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'scrooloose/nerdcommenter'
-Plugin 'mxw/vim-jsx'
 Plugin 'mtscout6/syntastic-local-eslint.vim'
-Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'posva/vim-vue'
 Plugin 'stanangeloff/php.vim'
 Plugin 'xolox/vim-misc'
-Plugin 'xolox/vim-easytags'
-Plugin 'arnaud-lb/vim-php-namespace'
-Plugin 'vimwiki/vimwiki'
+Plugin 'fatih/vim-go'
 call vundle#end()
 
 syntax on
 filetype plugin on
+" check one time after 4s of inactivity in normal mode
+set autoread                                                                                                                                                                                    
+au CursorHold * checktime  
 
 let g:jsx_ext_required = 0 " Allow JSX in normal JS files
-let g:easytags_async = 1
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -31,9 +31,19 @@ let g:syntastic_loc_list_height = 5
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 1
-let g:syntastic_php_checkers = ['php']
+let g:syntastic_php_checkers=['php', 'phpcs']
+let g:syntastic_php_phpcs_args='--standard=PSR2 -n'
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_vue_checkers = ['eslint']
+let g:syntastic_go_checkers = ['go', 'golint', 'errcheck']
+
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_types = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+let g:go_fmt_command = "goimports"
 
 let g:syntastic_error_symbol = '❌'
 let g:syntastic_style_error_symbol = '⁉️'
@@ -45,13 +55,9 @@ highlight link SyntasticWarningSign SignColumn
 highlight link SyntasticStyleErrorSign SignColumn
 highlight link SyntasticStyleWarningSign SignColumn
 
-set nocompatible
-set expandtab
-set tabstop=2
-set shiftwidth=2
-set autoindent
-set smartindent
-autocmd FileType php set tabstop=4|set shiftwidth=4|set expandtab
+autocmd BufNewFile,BufRead *{.js,.vue} setlocal nocompatible|set expandtab tabstop=4 shiftwidth=2 autoindent smartindent
+autocmd BufNewFile,BufRead *{.c,.php} setlocal tabstop=4 shiftwidth=4 expandtab autoindent smartindent
+autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4 
 
 set t_Co=256
 set pastetoggle=<f5>
@@ -88,6 +94,7 @@ let g:ctrlp_custom_ignore = {
 "----Auto-Commands----"
 ""Vue syntax of highlighting"
 autocmd BufNewFile,BufRead *.vue set ft=vue
+autocmd BufEnter *.vue set filetype=javascript
 
 autocmd BufLeave,FocusLost * silent! wall
 ""Auto src .vimrc on save"
@@ -95,11 +102,3 @@ augroup autosourcing
 	autocmd!
 	autocmd BufWritePost .vimrc source %
 augroup END
-
-""php namespace"
-function! IPhpInsertUse()
-    call PhpInsertUse()
-    call feedkeys('a',  'n')
-endfunction
-autocmd FileType php inoremap <Leader>u <Esc>:call IPhpInsertUse()<CR>
-autocmd FileType php noremap <Leader>u :call PhpInsertUse()<CR>
